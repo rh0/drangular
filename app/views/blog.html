@@ -1,0 +1,11 @@
+<p>This is the BLERG view.</p>
+<h2>Posts:</h2>
+<div class="blog-wrapper">
+  <div class="blog-post" ng-repeat="post in blogResults">
+    <h2 class="node-title">{{post.node_title}}</h2>
+    <div class="node-body" ng-bind-html="post.body | trustHtml"></div>
+    <div class="node-images">
+      <span class="image" ng-repeat="image in post.images" ng-bind-html="image | trustHtml"></span>
+    </div>
+  </div>
+</div>
