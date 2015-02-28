@@ -8,13 +8,7 @@
  * Controller of the drangularangApp
  */
 angular.module('drangularangApp')
-  .controller('MainCtrl', function ($scope, $routeParams, drangularMenuFactory) {
-    console.log($routeParams);
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-    $scope.menu = drangularMenuFactory.get();
-    console.log($scope);
+  .controller('MainCtrl', function ($scope, drupalMenu) {
+    $scope.menu = drupalMenu.tree;
+    console.log($scope.menu);
   });

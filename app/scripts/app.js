@@ -19,11 +19,14 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+        controller: 'MainCtrl',
+        resolve: {
+          drupalMenu: function(drangularMenuFactory) {
+            return drangularMenuFactory.get().$promise.then(function(data) {
+              return data;
+            });
+          }
+        }
       })
       .when('/blog', {
         templateUrl: 'views/blog.html',
@@ -31,7 +34,14 @@ angular
       })
       .when('/:section/:subsection/:post?/:field?', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        resolve: {
+          drupalMenu: function (drangularMenuFactory) {
+            return drangularMenuFactory.get().$promise.then(function(data) {
+              return data;
+            });
+          }
+        }
       })
       .otherwise({
         redirectTo: '/'
