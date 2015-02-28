@@ -29,6 +29,10 @@ angular
         templateUrl: 'views/blog.html',
         controller: 'BlogCtrl'
       })
+      .when('/:section/:subsection/:post?/:field?', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

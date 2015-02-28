@@ -8,13 +8,13 @@
  * Controller of the drangularangApp
  */
 angular.module('drangularangApp')
-  .controller('BlogCtrl', function ($scope, drangularFactory) {
+  .controller('BlogCtrl', function ($scope, drangularDataFactory) {
     console.log('BEEP BOOP!');
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-    $scope.blogResults = drangularFactory.query();
+    $scope.blogResults = drangularDataFactory.query();
     console.log($scope);
   });
