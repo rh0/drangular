@@ -38,8 +38,9 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         resolve: {
-          drupalMenu: function (drangularMenuFactory) {
+          drupalMenu: function (drangularMenuFactory, menuParse) {
             return drangularMenuFactory.get().$promise.then(function(data) {
+              menuParse.process(data);
               return data;
             });
           }
