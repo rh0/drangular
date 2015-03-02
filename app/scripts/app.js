@@ -20,6 +20,9 @@ angular
     $http.get('views/partials/defaultData.html').success(function(t) {
       $templateCache.put('defaultData', t);
     });
+    $http.get('views/partials/blogData.html').success(function(t) {
+      $templateCache.put('blogData', t);
+    });
   })
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -27,9 +30,11 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         resolve: {
-          drupalMenu: function(drangularMenuFactory) {
+          drupalMenu: function (drangularMenuFactory, menuParse) {
             return drangularMenuFactory.get().$promise.then(function(data) {
-              return data;
+              var $processedMenu = menuParse.process(data);
+              $processedMenu.template = '';
+              return $processedMenu;
             });
           }
         }

@@ -12,8 +12,14 @@ angular.module('drangularangApp')
       restrict: 'E',
       link: function(scope, element) {
         // This is where we switch on the template types.
-        element.html($templateCache.get('defaultData'));
+        if(scope.template === '') {
+          element.html($templateCache.get('defaultData'));
+        } else {
+          element.html($templateCache.get(scope.template + 'Data'));
+        }
         $compile(element.contents())(scope);
+
+        console.log(scope);
       }
     };
   });
