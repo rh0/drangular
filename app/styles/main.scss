@@ -87,3 +87,23 @@ body {
     border-bottom: 0;
   }
 }
+
+.main-container {
+  position: relative;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.navbar {
+  position: absolute;
+
+  a,
+  a:visited,
+  a:link {
+    text-decoration: none;
+    color: #333;
+  }
+  a:hover { text-decoration: underline; }
+}

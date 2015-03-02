@@ -10,7 +10,7 @@
 angular.module('drangularangApp')
   .factory('drangularDataFactory', function ($resource) {
     // Public API here
-    return $resource('http://sandbox.drangular.dev/drangular/blog');
+    return $resource('http://sandbox.drangular.dev/drangular/:service', {service: '@path'});
   })
   .factory('drangularMenuFactory', function ($resource) {
     // Public API here

@@ -15,6 +15,12 @@ angular
     'ngRoute',
     'ngSanitize'
   ])
+  .run(function($http, $templateCache) {
+    // Loading up our template partials.  I think there may be a simpler way.
+    $http.get('views/partials/defaultData.html').success(function(t) {
+      $templateCache.put('defaultData', t);
+    });
+  })
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
@@ -28,11 +34,7 @@ angular
           }
         }
       })
-      .when('/blog', {
-        templateUrl: 'views/blog.html',
-        controller: 'BlogCtrl'
-      })
-      .when('/:section/:subsection/:post?/:field?', {
+      .when('/:service?', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         resolve: {

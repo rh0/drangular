@@ -22,5 +22,5 @@ angular.module('drangularangApp')
         default :
           return path.replace('drangular', '');
       }
-    }
+    };
   });
