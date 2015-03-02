@@ -7,7 +7,7 @@
     <div class="collapse">
       <ul class="nav navbar-nav">
         <li ng-repeat="menuItem in menu">
-        <a href="{{menuItem.link.path | drupalUrlTranslate}}" ng-class="{ active: isActive('{{menuItem.link.path | drupalUrlTranslate}}') }" >{{menuItem.link.title}}</a>
+        <a href="{{menuItem.path}}" ng-class="menuItem.classes" >{{menuItem.name}}</a>
         </li>
       </ul>
     </div>

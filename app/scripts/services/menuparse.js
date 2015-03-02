@@ -32,22 +32,27 @@ angular.module('drangularangApp')
     }
 
     function menuCleanup(dirtyMenuTree) {
+      var menuTree = [];
       for(var menuItem in dirtyMenuTree) {
-        //console.log('RawHref: ' + menuItem.link.href);
-        menuProcessed.tree.push({
+        menuTree.push({
           name: dirtyMenuTree[menuItem].link.title,
           path: pathScrub(dirtyMenuTree[menuItem].link.href),
           weight: dirtyMenuTree[menuItem].link.weight,
-          classes: activeCheck(pathScrub(dirtyMenuTree[menuItem].link.href))
+          classes: activeCheck(pathScrub(dirtyMenuTree[menuItem].link.href)),
+          children: menuCleanup(dirtyMenuTree[menuItem].children)
         });
+
+        if(activeCheck(pathScrub(dirtyMenuTree[menuItem].link.href)) === 'active') {
+          menuProcessed.template = dirtyMenuTree[menuItem].link.options.attributes.id;
+        }
       }
+      return menuTree;
     }
 
     // Public API here
     return {
       process: function(drupalMenu) {
-        menuCleanup(drupalMenu.tree);
-        console.log(menuProcessed);
+        menuProcessed.tree = menuCleanup(drupalMenu.tree);
         return menuProcessed;
       }
     };

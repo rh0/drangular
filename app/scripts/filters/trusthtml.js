@@ -13,14 +13,4 @@ angular.module('drangularangApp')
     return function(input) {
       return $sce.trustAsHtml(input);
     };
-  })
-  .filter('drupalUrlTranslate', function() {
-    return function(path) {
-      switch(path) {
-        case '<front>':
-          return '/';
-        default :
-          return path.replace('drangular', '');
-      }
-    };
   });

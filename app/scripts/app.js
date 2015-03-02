@@ -40,8 +40,7 @@ angular
         resolve: {
           drupalMenu: function (drangularMenuFactory, menuParse) {
             return drangularMenuFactory.get().$promise.then(function(data) {
-              menuParse.process(data);
-              return data;
+              return menuParse.process(data);
             });
           }
         }
